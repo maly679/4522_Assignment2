@@ -1,0 +1,70 @@
+header img {
+	position: relative;
+	top: 0;
+	right: 0;
+	width: 100%;
+}
+table {
+    width: 80%;
+    position: relative;
+    padding: 20px;
+}
+
+container {
+    padding: 20px
+}
+
+.carousel{
+
+}
+
+.carousel-inner{
+    width: 10%;
+    padding-left: 50px;
+}
+
+body, html {
+    height: 100%;
+}
+
+#button-space{
+    margin: 20px;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/crypto.png");
+
+  /* Set a specific height */
+  height: 450px;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
