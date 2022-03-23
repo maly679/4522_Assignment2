@@ -1,0 +1,4 @@
+MongoDB Access: 
+mongodb+srv://admin:<password>@cluster0.z0vtj.mongodb.net/test
+connection for mongoDB
+password in discord
