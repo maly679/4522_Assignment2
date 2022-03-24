@@ -77,7 +77,7 @@ Promise.all([
                 for (let g of glist) {
                     console.log(d.Symbol);
             if (d.Symbol == g.CoinSymbol) {
-                g.Comments = d.Comments;
+                g.Comments = d.selectedComment;
                 g.ID = d._id;
                 console.log(g.ID);
             }
