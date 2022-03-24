@@ -18,6 +18,15 @@ container {
 
 }
 
+th {
+    text-align: center;
+}
+ul {
+list-style-type: none;
+text-align: center;
+
+}
+
 .carousel-inner{
     width: 10%;
     padding-left: 50px;
