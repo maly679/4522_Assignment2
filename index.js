@@ -152,8 +152,11 @@ function addCoinList(data) {
    
     for (let d of data) {
         let optionT = document.createElement("li");
-        console.log(d.Symbol);
+        if ( d.Comments)  {
         optionT.textContent = d.Comments;
+        } else {
+            optionT.innerHTML = "</br>";
+        }
         document.querySelector(".comments").appendChild(optionT);
 
     }
