@@ -5,14 +5,6 @@ const CryptoCoins = 'https://sqldatacoins.azurewebsites.net/api/CryptoInfo';
 const CoinPut = 'https://sqldatacoins.azurewebsites.net/api/coins/id ';
 let glist;
 
-// fetch(mainCoins).then(response => response.json()).then(data => {
-//     glist = [...data];
-//     // addCoinList(glist);
-
-// }).catch(error => {
-//     console.error(error)
-// });
-
 Promise.all([
     fetch(mainCoins),
     fetch(CryptoCoins),
@@ -24,38 +16,13 @@ Promise.all([
   
     response1.json().then(data => {
         console.log("yes");
-        // for (let g of glist) {
-        // data.array.forEach(d => {
-            
-       
-       
-        //     if (g.CoinName == d.Name) {
-        //         glist.push({Date: d.Date});
-        //         glist.push({Price: d.Price});
-        //         glist.push({MarketCap: d.Marketcap});
-        //     }
-        // });
-        // }
         glist = [...data];
-        // addCoinList(data);
-        // console.log(glist);
+
     });
 
 
         response2.json().then(data => {
-           
-            // for (let g of glist) {
-            // data.array.forEach(d => {
-                
-           
-           
-            //     if (g.CoinName == d.Name) {
-            //         glist.push({Date: d.Date});
-            //         glist.push({Price: d.Price});
-            //         glist.push({MarketCap: d.Marketcap});
-            //     }
-            // });
-            // }
+
     
               console.log(data);
                    for (let d of data) {
@@ -92,21 +59,14 @@ Promise.all([
 
       });
     
-    // }).catch(error => {
-    //     console.error(error)
-    // });
-   
 
 let selectedCoinValue;
 let selectedComment;
 
 
 function addCoinList(data) {
-    // data.sort();
 
-    //adding data to global array to allow for future processing.
     console.log(data);
-    //reintialize and add gallery listings to gallery list.
 
     document.querySelector(".coin").innerHTML = "";
     let ulStuff = document.getElementsByClassName(".coin");
@@ -171,62 +131,11 @@ function addCoinList(data) {
 
     }
 
-
-    // document.querySelector(".price").innerHTML = "";
-   
-    // for (let d of data) {
-    //     let optionT = document.createElement("li");
-    //     console.log(d.Price);
-    //     optionT.textContent = d.Price;
-    //     document.querySelector(".price").appendChild(optionT);
-
-
-    // }
-
-
-
-    // document.querySelector(".symbol").innerHTML = "";
-   
-    // for (let d of data) {
-    //     let optionT = document.createElement("li");
-    //     optionT.textContent = d.CoinSymbol;
-    //     document.querySelector(".symbol").appendChild(optionT);
-
-
-    // }
-
-
-    // document.querySelector(".symbol").innerHTML = "";
-   
-    // for (let d of data) {
-    //     let optionT = document.createElement("li");
-    //     optionT.textContent = d.CoinSymbol;
-    //     document.querySelector(".symbol").appendChild(optionT);
-
-
-    // }
-
-    // document.querySelector(".symbol").innerHTML = "";
-   
-    // for (let d of data) {
-    //     let optionT = document.createElement("li");
-    //     optionT.textContent = d.CoinSymbol;
-    //     document.querySelector(".symbol").appendChild(optionT);
-
-
-    // }
-
 }
 
-// function putComment(e) {
-//     let e = document.querySelector("#selectCoin");
-//     event.preventDefault();
-//     console.log(event.target.value);
-// }
 
 document.querySelector("#selectCoin").addEventListener("change", function(event) {
-    // console.log(document.querySelector("#selectCoin"));
-    // var selectedOption = document.forms[0].selectCoin;
+
 
     selectedCoinValue = event.target.value;
     console.log(selectedCoinValue);
