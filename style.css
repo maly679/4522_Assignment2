@@ -27,6 +27,17 @@ text-align: center;
 
 }
 
+.deleteButton {
+    outline:none;
+    border: none;
+    all: unset;
+    cursor: pointer;
+    height: 1px;
+    width: 1px;
+}
+.exitButton {
+    height: 10px;
+}
 .carousel-inner{
     width: 10%;
     padding-left: 50px;
