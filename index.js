@@ -10,6 +10,44 @@ let selectedComment;
 
  function addCoinList(data) {
 
+
+    let tBody = document.getElementById("coinTableBody");
+
+    for (let d of data) {
+        var row = document.createElement("tr");
+
+        var collum = document.createElement("td");
+        collum.textContent = d.CoinName;
+        row.appendChild(collum);
+
+        collum = document.createElement("td");
+        collum.textContent = d.CoinSymbol;
+        row.appendChild(collum);
+
+        collum = document.createElement("td");
+        collum.textContent = d.Price;
+        row.appendChild(collum);
+
+        collum = document.createElement("td");
+        collum.textContent = d.Date;
+        row.appendChild(collum);
+        
+        collum = document.createElement("td");
+        collum.classList.add("deleteOption");
+        if ( d.Comments)  {
+            collum.innerHTML = d.Comments + ' <button class = "deleteButton comments"><img class = "exitButton" src="./exitButton.png" /></button> </li>';
+            collum.setAttribute("id", d.ID);
+        } else {
+            collum.innerHTML = "</br>";
+        }
+        row.appendChild(collum);
+
+        tBody.appendChild(row);
+
+    }
+
+
+    /*
     document.querySelector(".coin").innerHTML = "";
     let ulStuff = document.getElementsByClassName(".coin");
     for (let d of data) {
@@ -65,7 +103,8 @@ let selectedComment;
         document.querySelector(".comments").appendChild(optionT);
         
 
-    }
+    } 
+    */
 
 
     for (let d of data) {

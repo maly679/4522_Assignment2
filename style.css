@@ -4,10 +4,15 @@ header img {
 	right: 0;
 	width: 100%;
 }
+
 table {
     width: 80%;
     position: relative;
     padding: 20px;
+}
+
+table td {
+    text-align: center;
 }
 
 container {
