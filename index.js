@@ -135,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
            
             
          }
+         document.querySelector("table").removeChild(img);
+
          addCoinList(glist);
 
         });
@@ -144,6 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
      
     }
     
+
+    let img = document.createElement("img");
+    img.setAttribute('src', 'bitcoin loading.gif');
+    document.querySelector("table").appendChild(img);
     
     
     
@@ -154,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const first = await promise1;
         const second = await promise2;
         const third = await promise3;
-
         // const addCoin = await addCoinList(glist);
      }
     

@@ -81,6 +81,10 @@ body, html {
   color: white;
 }
 
+img[src*="bitcoin loading.gif"] {
+    margin-left: 30px;
+}
+
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting:before,
 table.dataTable thead .sorting_asc:after,
