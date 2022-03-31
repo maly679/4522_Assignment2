@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     //location.reload();
     
-     function addCoinList(data) {
+      function addCoinList(data) {
     
         document.querySelector(".coin").innerHTML = "";
         let ulStuff = document.getElementsByClassName(".coin");
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
           });
           resolve();
-        }, 500)
+        }, 800)
     });
     }
     
@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
          }
          addCoinList(glist);
-    
+
         });
         resolve();
-      }, 500)
+      }, 1000)
     });  
      
     }
@@ -154,10 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const first = await promise1;
         const second = await promise2;
         const third = await promise3;
-    
+
         // const addCoin = await addCoinList(glist);
-     
-    
      }
     
     // renderMainCoins();
