@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
            
             
          }
-         document.querySelector("table").removeChild(img);
-
+         document.querySelector(".table-responsive").removeChild(img);
+         
          addCoinList(glist);
 
         });
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let img = document.createElement("img");
     img.setAttribute('src', 'bitcoin loading.gif');
-    document.querySelector("table").appendChild(img);
+    document.querySelector(".table-responsive").appendChild(img);
     
     
     
