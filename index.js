@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedCoinValue;
     let selectedComment;
     
+    //location.reload();
     
      function addCoinList(data) {
     
