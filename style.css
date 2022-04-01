@@ -20,6 +20,8 @@ container {
 }
 
 .carousel{
+    padding-top: 2em;
+    /* //background-color: white; */
 
 }
 
@@ -37,14 +39,14 @@ text-align: center;
     border: none;
     all: unset;
     cursor: pointer;
-    height: 1px;
-    width: 1px;
+    height: 2px;
+    width: 2px;
 }
 .exitButton {
     height: 10px;
 }
 .carousel-inner{
-    width: 10%;
+    width: 20%;
     padding-left: 50px;
 }
 
