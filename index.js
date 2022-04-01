@@ -116,6 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     var a = "$"
                      g.Price = a + d.Price;
                      g.marketcap = a + d.marketcap;
+                     //g.Price = a + d.marketcap;
+                     //g.marketcap = a + d.marketcap;
                     console.log(d.marketcap);
                      g.Date = d.Date.split("T")[0];
                      
