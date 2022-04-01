@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let glist;
     let selectedCoinValue;
     let selectedComment;
+    let selectedName;
     
     //location.reload();
     
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
        
         for (let d of data) {
             let optionT = document.createElement("li");
-            console.log(d.Symbol);
             optionT.textContent = d.CoinSymbol;
             document.querySelector(".symbol").appendChild(optionT);
     
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
        
         for (let d of data) {
             let optionT = document.createElement("li");
-            console.log(d.Symbol);
             optionT.textContent = d.Price;
             document.querySelector(".price").appendChild(optionT);
     
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
        
         for (let d of data) {
             let optionT = document.createElement("li");
-            console.log(d.Symbol);
             optionT.textContent = d.Date;
             document.querySelector(".date").appendChild(optionT);
     
@@ -96,13 +94,44 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector("#selectCoin").appendChild(optionT);
     
         }
+
+    //     <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+    //     <h4>Jhon Doe</h4>  <br>
+    //     <p>Comment 1</p>
+    // </div>
+
+     for (let d of data) {
+    
+        if (d.User) {
+         let imgDiv = document.createElement("div");
+         imgDiv.classList.add("comment", "mt-4", "text-justify", "float-left");
+         console.log(imgDiv);
+         let img = document.createElement("img");
+         img.classList.add("rounded-circle");
+         img.setAttribute("width", "40");
+         img.setAttribute("height", "40");
+         img.setAttribute("src", "https://i.imgur.com/CFpa3nK.jpg");
+         let header4 = document.createElement("h4");
+         header4.textContent = "Name: " + d.User;
+         let pUser = document.createElement("p");
+         pUser.textContent = "Comment: " +  d.Comments;
+         let pCoin = document.createElement("h5");
+         pCoin.textContent = "Coin: " + d.CoinSymbol;
+         document.querySelector(".userComments").appendChild(imgDiv);
+         imgDiv.appendChild(img);
+         document.querySelector(".userComments").appendChild(header4);
+         document.querySelector(".userComments").appendChild(pCoin);
+         document.querySelector(".userComments").appendChild(pUser);
+
+        }
+
+      }
     
     }
      async function renderMainCoins() {
         return new Promise(function(resolve) {
             setTimeout(function() {
            fetch(mainCoins).then(response => response.json()).then(data => {
-            console.log(data);
             glist = [...data];
            });
     
@@ -118,17 +147,14 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(CryptoCoins).then(response => response.json()).then(data => {
     
         
-            console.log(data);
                  for (let d of data) {
                      for (let g of glist) {
                  if (d.Symbol == g.CoinSymbol) {
                      var a = "$"
                      g.Price = a + d.Price;
-                     console.log(d);
                      g.marketcap = a + d.Marketcap;
                      //g.Price = a + d.marketcap;
                      //g.marketcap = a + d.marketcap;
-                    console.log(d.marketcap);
                      g.Date = d.Date.split("T")[0];
                      
                  }
@@ -150,11 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 for (let d of data) {
     
                     for (let g of glist) {
-                       console.log(d.Symbol);
                 if (d.Symbol == g.CoinSymbol) {
                     g.Comments = d.selectedComment;
+                    if (d.selectedName) {
+
+                    g.User = d.selectedName;
+                    console.log(g.User);
+                    }
                     g.ID = d._id;
-                    console.log(g.ID);
                 }
              }
            
@@ -166,11 +195,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         });
         resolve();
-      }, 1000)
+      }, 1300)
     });  
      
     }
     
+
 
     let img = document.createElement("img");
     img.setAttribute('src', 'bitcoin loading.gif');
@@ -192,9 +222,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // renderCryptoCoins();
     //  renderCoinPut();
     inParallel();
-     console.log(glist);
      
+      
+    document.querySelector(".submitCoin").addEventListener("click", function (event) {            
+        event.preventDefault();
+        var obj = {};
+        obj.selectedComment = selectedComment;
+        obj.selectedName = selectedName;
+        console.log(obj);
+        const putMethod = {
+            method: 'PUT', // Method itself
+            headers: {
+             'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+            },
+            body: JSON.stringify(obj) // We send data in JSON format
+           }
+           
+           // make the HTTP put request using fetch api
+           fetch(`https://sqldatacoins.azurewebsites.net/api/coins/${selectedCoinValue}`, putMethod)
+           .then(response => response.json())
+           .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
+           .catch(err => console.log(err)) // Do something with the error
     
+        });
+
     document.querySelector("#selectCoin").addEventListener("change", function(event) {
         // console.log(document.querySelector("#selectCoin"));
         // var selectedOption = document.forms[0].selectCoin;
@@ -208,11 +259,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
        
         selectedComment = event.target.value;
-        console.log(selectedComment);
     
     
     });
     
+    document.querySelector("#fullname").addEventListener("change", function (event) {
+    
+       
+        selectedName = event.target.value;
+        console.log(selectedName);
+    
+    });
     
     
     document.querySelector(".comments").addEventListener('click',  function(e) {
@@ -222,7 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if(e.target.className == 'exitButton') {
         
         let IDofDeletedCoin = e.target.parentElement.parentElement.id;
-        console.log(IDofDeletedCoin);
     
             fetch(`https://sqldatacoins.azurewebsites.net/api/coins/${IDofDeletedCoin}`, {
       method: 'DELETE',
@@ -233,30 +289,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
             
-    
-    
-    
-    
-    
-    
-    
-    document.querySelector(".submitCoin").addEventListener("click",  function(e) {
-    
-        e.preventDefault();
-    
-        const putMethod = {
-            method: 'PUT', // Method itself
-            headers: {
-             'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-            },
-            body: JSON.stringify({selectedComment}) // We send data in JSON format
-           }
-           
-           // make the HTTP put request using fetch api
-           fetch(`https://sqldatacoins.azurewebsites.net/api/coins/${selectedCoinValue}`, putMethod)
-           .then(response => response.json())
-           .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
-           .catch(err => console.log(err)) // Do something with the error
-    
-        });
+  
     });
