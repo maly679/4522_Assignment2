@@ -39,6 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector(".price").appendChild(optionT);
     
         }
+         /* document.querySelector(".marketcap").innerHTML = "";
+
+        for (let d of data) {
+            let optionT = document.createElement("li");
+            console.log(d.Symbol);
+            optionT.textContent = d.marketcap;
+            console.log(marketcap);
+            document.querySelector(".marketcap").appendChild(optionT);
+            //console.log(d.marketcap);
+        }  */
     
         document.querySelector(".date").innerHTML = "";
        
@@ -103,8 +113,11 @@ document.addEventListener('DOMContentLoaded', function() {
                  for (let d of data) {
                      for (let g of glist) {
                  if (d.Symbol == g.CoinSymbol) {
-                     g.Price = d.Marketcap;
-                     g.Date = d.Date.split("23:59")[0];
+                    
+                     g.Price = d.Price;
+                     g.marketcap = d.marketcap;
+
+                     g.Date = d.Date.split("T")[0];
                      
                  }
               }
@@ -125,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 for (let d of data) {
     
                     for (let g of glist) {
-                        console.log(d.Symbol);
+                       console.log(d.Symbol);
                 if (d.Symbol == g.CoinSymbol) {
                     g.Comments = d.selectedComment;
                     g.ID = d._id;
