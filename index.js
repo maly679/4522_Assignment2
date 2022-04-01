@@ -39,6 +39,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector(".price").appendChild(optionT);
     
         }
+
+        document.querySelector(".marketCap").innerHTML = "";
+       
+        for (let d of data) {
+            let optionT = document.createElement("li");
+            optionT.textContent = d.marketcap;
+            document.querySelector(".marketCap").appendChild(optionT);
+        }
+
          /* document.querySelector(".marketcap").innerHTML = "";
 
         for (let d of data) {
@@ -113,9 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
                  for (let d of data) {
                      for (let g of glist) {
                  if (d.Symbol == g.CoinSymbol) {
-                    var a = "$"
+                     var a = "$"
                      g.Price = a + d.Price;
-                     g.marketcap = a + d.marketcap;
+                     console.log(d);
+                     g.marketcap = a + d.Marketcap;
                      //g.Price = a + d.marketcap;
                      //g.marketcap = a + d.marketcap;
                     console.log(d.marketcap);
