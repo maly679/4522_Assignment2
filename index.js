@@ -241,7 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
            // make the HTTP put request using fetch api
            fetch(`https://sqldatacoins.azurewebsites.net/api/coins/${selectedCoinValue}`, putMethod)
            .then(response => response.json())
-           .then(data => { console.log(data);         location.reload();
+           .then(data => { console.log(data);         
+            location.reload();
            }) // Manipulate the data retrieved back, if we want to do something with it
            .catch(err => console.log(err)) // Do something with the error
     
