@@ -241,7 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
            // make the HTTP put request using fetch api
            fetch(`https://sqldatacoins.azurewebsites.net/api/coins/${selectedCoinValue}`, putMethod)
            .then(response => response.json())
-           .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
+           .then(data => { console.log(data);         location.reload();
+           }) // Manipulate the data retrieved back, if we want to do something with it
            .catch(err => console.log(err)) // Do something with the error
     
         });
@@ -275,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector(".comments").addEventListener('click',  function(e) {
     
         e.preventDefault();
-    
+        
             if(e.target.className == 'exitButton') {
         
         let IDofDeletedCoin = e.target.parentElement.parentElement.id;
@@ -284,7 +285,10 @@ document.addEventListener('DOMContentLoaded', function() {
       method: 'DELETE',
     })
     .then(res => res.text()) // or res.json()
-    .then(res => console.log(res))
+    .then(res => {
+        console.log(res);
+        location.reload();
+    })
     
             }
         });
