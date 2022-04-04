@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const mainCoins = 'https://sqldatacoins.azurewebsites.net/api/coinlist/{id}?code=Rwc2/lGDvUiJ9DnDqLXYLLGcP41IB2eSnFMA8SGIyXLhFvjon00elw==';
-    const CryptoCoins = 'https://sqldatacoins.azurewebsites.net/api/CryptoInfo';
+    const CryptoCoins = 'https://sqldatacoins.azurewebsites.net/api/CryptoInfo/{id}';
     const CoinPut = 'https://sqldatacoins.azurewebsites.net/api/coins/id';
     let glist;
     let selectedCoinValue;
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
            });
     
            resolve();
-        }, 500)
+        }, 100)
      });
     }
     
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
           });
           resolve();
-        }, 800)
+        }, 500)
     });
     }
     
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         });
         resolve();
-      }, 1300)
+      }, 900)
     });  
      
     }
