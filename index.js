@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const mainCoins = 'https://sqldatacoins.azurewebsites.net/api/HttpTrigger3?code=Rwc2/lGDvUiJ9DnDqLXYLLGcP41IB2eSnFMA8SGIyXLhFvjon00elw==';
+    const mainCoins = 'https://sqldatacoins.azurewebsites.net/api/coinlist/{id}?code=Rwc2/lGDvUiJ9DnDqLXYLLGcP41IB2eSnFMA8SGIyXLhFvjon00elw==';
     const CryptoCoins = 'https://sqldatacoins.azurewebsites.net/api/CryptoInfo';
     const CoinPut = 'https://sqldatacoins.azurewebsites.net/api/coins/id';
     let glist;
